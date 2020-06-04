@@ -1,0 +1,61 @@
+No react o arquivo inpricipal é o index.tsx
+
+JSX: Sintaxe de XML dentro do javascript, é a posibilidade de escrever arquivo html com javascript.
+
+Coneitos do react.
+
+1-Componentes: Componentes sempre inicia com letra Maiuscula.
+
+2-Propriedades:
+
+3-Estado:
+
+SITES de ICONS
+
+Fonte awelsome 
+Material icons
+Feather icons
+
+==============================================
+MAPAS
+- leaflet = https://leafletjs.com
+- react-leaflet = https://react-leaflet.js.org/en/
+
+Intalação
+npm install leaflet react-leaflet
+
+depois de instalar no site, https://leafletjs.com/examples/quick-start/
+copiar o link do css
+na pagina do https://react-leaflet.js.org/en/
+copiar o explo do TileLayer
+
+==============================================
+axios = biblioteca pra fazer requisiçõs como servidor 
+
+
+Sempre que criar um estado "useEstate" pra um array ou objeto precisa manualmente informar 
+o tipo de variavel que vai dentro.
+
+
+==============================================
+API do IBGE pra pegar Cidades e Estados
+https://servicodados.ibge.gov.br/api/docs/localidades?versao=1
+
+Ufs
+https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-UFs-estadosGet
+
+pegar o GET
+https://servicodados.ibge.gov.br/api/v1/localidades/estados
+
+Municipios por Ufs
+https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-Municipios-estadosUFMunicipiosGet
+
+pegar o GET
+https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios
+
+============================================
+
+GUIA PARA TYPE SCRIPT
+   PESQUISAR
+   por: typescript react cheat sheet
+   https://github.com/typescript-cheatsheets/react-typescript-cheatsheet
