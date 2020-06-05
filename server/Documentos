@@ -1,0 +1,105 @@
+Dia 1 =============================================
+
+Instalação 
+- npm init -y
+
+- npm install express  = "Biblioteca, micro framework pra lidar com  rotas"
+- npm install @types/express -D = "Definição de tipos da biblioteca express"
+
+- npm install typescript -D = "typescript"
+
+- npm install ts-node-dev -D = "Pacote do typescript pro node entender typescript"
+
+- npx tsc --init = "arquivo de configuração do typescript"
+
+- npm install ts-node-dev -D = "Pacote que observa o codigo e sempre que tem alteração ele executa o sever novamente"
+
+- Configurando package.json
+"script"
+  "dev" : "ts-node src/server.ts"
+
+Rodando projeto
+npm run dev
+
+
+
+Dia 2 ===================================================
+
+
+Roata: Endereço completo da requisição
+Recurso: Qual entidade estamos acesadno do sistema
+
+GET: Buscar uma ou mais informações no back-Endereço
+POST: Criar uma nova informação no back-Endereço
+PUT: Atualiza uma informação existente no back-end
+DELETE:  Remove uma informação do back-end.
+
+
+POST: http://localhost:3333/users = Criar um usuário
+GET: http://localhost:3333/users = Listar um usuário
+GET: http://localhost:3333/users/5 = Buscar dados do usuário com ID 5
+
+Request Params: Parâmetros que vem na propria rota que indetificam um Recurso
+Query Params: Parâmetros que vem na propria rota geralmente opcionaies para filtros, paginação.
+Request Body:  Parâmetros que vem no corpo da requisição para criação/atualização de informações.
+
+1 - instalar o knex
+    npm install knex
+
+2 - instalar o banco de dados sqlite3
+    npm install sqlite3
+
+
+4 - N raiz do projeto criar um arquivo knexfile.ts
+    Para fazer algumas configurações que o arquivo de connection não tem
+
+5 - Para rodar a migration executar 
+    npx knex migrate:latest --knexfile knexfile.ts migrate:latest
+
+6 - Configura package.json com script pro nex
+    - "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
+    - Para rodar a migration basta executa
+
+      npm run knex:migrate
+
+7 - Executar o script de seed
+    Configura package.json
+    - "knex:seed": "knex --knexfile knexfile.ts seed:run",
+    - Para rodar a migration basta executa
+
+      npm run knex:seed
+
+=================================================
+
+UPLOAD DE ARQUIVOS COM MULTER
+
+- instalação 
+    - npm install multer
+
+Olhar como funciona o fileFilter do multer, pra selecionar o tipo de arquivo
+que o usuário pode faer upload.
+
+pesquisar so Serialização
+ou
+API Transform
+
+
+NO README.MD - Configura para o ip local da maquina no itemsController e no PointsController
+
+instalar a biblioteca celebrate
+ - npm install celebrate
+    interlicense
+    - npm install @types/hapi__joi
+
+{
+	 "name": "Mercado Extingo",
+    "email":"contato@imperial.com.br",
+    "whatsapp":"119995535995",
+    "latitude": -46.84565484,
+    "longitude": -32.48954635,
+    "city":"São Paulo",
+    "uf":"SP",
+    "items": [
+			1,2, 6
+		]
+}
