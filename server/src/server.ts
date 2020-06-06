@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import routes from './routes/routes';
 import { errors } from 'celebrate';
+import routes from './routes/routes';
 
 const app = express();
 
@@ -16,4 +16,4 @@ app.use(errors());
 
 app.listen(3333, () => {
   console.log('Server is running: htp://localhost:3333');
-})
+});

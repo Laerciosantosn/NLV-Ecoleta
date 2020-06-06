@@ -1,4 +1,4 @@
-import knex from   'knex';
+import knex from 'knex';
 import path from 'path';
 
 const connection = knex({
@@ -6,7 +6,7 @@ const connection = knex({
   connection: {
     filename: path.resolve(__dirname, 'database.sqlite'),
   },
-  useNullAsDefault:true,
-})
+  useNullAsDefault: true,
+});
 
 export default connection;
