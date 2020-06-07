@@ -3,11 +3,13 @@
   --title-color: #322153;
   --text-color: #6C6C80;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 body {
   background: #F0F0F5;

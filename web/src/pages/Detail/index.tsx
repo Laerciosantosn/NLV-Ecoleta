@@ -24,7 +24,7 @@ interface IBGECityResponse {
   nome: string;
 }
 
-const CreatePoint: React.FC = () => {
+const Detail: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
@@ -159,138 +159,88 @@ const CreatePoint: React.FC = () => {
   }
 
   return (
-    <div id="page-create-point">
-      <header>
-        <img src={logo} alt="Ecoleta" />
+    <div id="page-detail">
+      <div className="header-container">
+        <header>
+          <img src={logo} alt="Ecoleta" />
 
-        <Link to="/">
-          <FiArrowLeft />
-          Voltar para home
-        </Link>
-      </header>
+          <Link to="/">
+            <FiArrowLeft />
+            Voltar para home
+          </Link>
+        </header>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <h1>
-          Cadastro do
-          <br />
-          ponto de coleta
-        </h1>
-
-        <Dropzone onFileUploaded={setSelectedFile} />
-
-        <fieldset>
-          <legend>
-            <h2>Dados</h2>
-          </legend>
-
-          <div className="field">
-            <label htmlFor="name">Nome da entidade</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              onChange={handleInputChange}
+      <main className="main-container">
+        <p>
+          <strong>2 pontos</strong>
+          encontrados
+        </p>
+        <div className="points-container">
+          <div className="point">
+            <img
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+              alt="Mercadinho"
             />
+            <h1>Colectoria</h1>
+            <h2>
+              Reíduos Eletrônicos,
+              <br />
+              papel
+            </h2>
+            <p>São Paulo, São Paulo</p>
+            <p>Limoes ardente, jardim das frutas </p>
+            <p>650</p>
           </div>
 
-          <div className="field-group">
-            <div className="field">
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className="field">
-              <label htmlFor="whatsapp">WhatsAapp</label>
-              <input
-                type="text"
-                name="whatsapp"
-                id="whatsapp"
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>
-            <h2>Endereço</h2>
-            <span>Selecione o enderço no mapa</span>
-          </legend>
-          {/* -23.4641256, -46.7012522 */}
-          <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          <div className="point">
+            <img
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+              alt="Mercadinho"
             />
-
-            <Marker position={selectedPosition} />
-          </Map>
-
-          <div className="field-group">
-            <div className="field">
-              <label htmlFor="uf">Estado (UF)</label>
-              <select
-                name="uf"
-                id="uf"
-                value={selectedUf}
-                onChange={handleSelectedUF}
-              >
-                <option value="0">Selecione uma UF </option>
-                {ufs.map((uf) => (
-                  <option value={uf} key={uf}>
-                    {uf}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="field">
-              <label htmlFor="city">Cidade</label>
-              <select
-                name="city"
-                id="city"
-                value={selectedCity}
-                onChange={handleSelectedCity}
-              >
-                <option value="0">Selecione uma cidade </option>
-                {cities.map((city) => (
-                  <option value={city} key={city}>
-                    {city}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <h1>Colectoria</h1>
+            <h2>
+              reiduos Eletrônicos,
+              <br />
+            </h2>
+            <p>São Paulo, São Paulo</p>
+            <p>Limoes ardente, jardim das frutas </p>
+            <p>650</p>
           </div>
-        </fieldset>
 
-        <fieldset>
-          <legend>
-            <h2>Ítens de coleta</h2>
-            <span>Selecione um ou mais ítens abaixo</span>
-          </legend>
+          <div className="point">
+            <img
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+              alt="Mercadinho"
+            />
+            <h1>Colectoria</h1>
+            <h2>
+              reiduos Eletrônicos,
+              <br />
+            </h2>
+            <p>São Paulo, São Paulo</p>
+            <p>Limoes ardente, jardim das frutas </p>
+            <p>650</p>
+          </div>
+        </div>
+      </main>
 
-          <ul className="items-grid">
-            {items.map((item) => (
-              <li
-                key={item.id}
-                onClick={() => handleSelectedItem(item.id)}
-                className={selectedItems.includes(item.id) ? 'selected' : ''}
-              >
-                <img src={item.image_url} alt={item.title} />
-                <span>{item.title}</span>
-              </li>
-            ))}
-          </ul>
-        </fieldset>
+      <div className="form-container">
+        <form>
+          <fieldset>
+            {/* -23.4641256, -46.7012522 */}
+            <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              />
 
-        <button type="submit">Cadastrar ponto de coleta</button>
-      </form>
+              <Marker position={selectedPosition} />
+            </Map>
+          </fieldset>
+        </form>
+      </div>
     </div>
   );
 };
-export default CreatePoint;
+export default Detail;

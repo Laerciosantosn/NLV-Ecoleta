@@ -3,10 +3,6 @@ import './App.css';
 
 import Routes from './routes';
 
-function App() {
-  return (
-      <Routes/>
-  );
-}
+const App: React.FC = () => <Routes />;
 
 export default App;
