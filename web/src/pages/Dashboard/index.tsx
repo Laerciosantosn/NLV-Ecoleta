@@ -2,38 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiLogIn, FiSearch } from 'react-icons/fi';
 
-import './styles.css';
+import { Container, Content, Main, Title, Header } from './styles';
 
 import logo from '../../assets/logo.svg';
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
-    <div id="page-home">
-      <div className="content">
-        <header>
+    <Container id="page-home">
+      <Content className="content">
+        <Header>
           <img src={logo} alt="Ecoleta" />
 
           <Link to="/create-point">
             <FiLogIn />
             Cadastre um ponto de coleta
           </Link>
-        </header>
+        </Header>
 
-        <main>
-          <h1>Seu marketplace de coleta de resíduos.</h1>
+        <Main>
+          <Title>Seu marketplace de coleta de resíduos.</Title>
           <p>
             Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.
           </p>
 
-          <Link to="/create-point">
+          <Link to="/detail">
             <span>
               <FiSearch />
             </span>
             <strong>Pesquisar ponto de coleta</strong>
           </Link>
-        </main>
-      </div>
-    </div>
+        </Main>
+      </Content>
+    </Container>
   );
 };
-export default Home;
+export default Dashboard;

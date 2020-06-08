@@ -1,8 +1,3 @@
-/* html, body {
-  height: 100%;
-  background-color: #FFf;
-} */
-
 #page-detail {
   display: grid;
   grid-template-rows: 1fr 1fr 450px;
