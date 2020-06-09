@@ -1,13 +1,23 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
 
-import './styles.css';
+import {
+  Container,
+  Title,
+  Header,
+  Form,
+  Field,
+  FieldGroup,
+  Button,
+  ItensGrid,
+} from './styles';
 
 import logo from '../../assets/logo.svg';
 
@@ -159,22 +169,22 @@ const CreatePoint: React.FC = () => {
   }
 
   return (
-    <div id="page-create-point">
-      <header>
+    <Container id="page-create-point">
+      <Header>
         <img src={logo} alt="Ecoleta" />
 
         <Link to="/">
           <FiArrowLeft />
           Voltar para home
         </Link>
-      </header>
+      </Header>
 
-      <form onSubmit={handleSubmit}>
-        <h1>
+      <Form onSubmit={handleSubmit}>
+        <Title>
           Cadastro do
           <br />
           ponto de coleta
-        </h1>
+        </Title>
 
         <Dropzone onFileUploaded={setSelectedFile} />
 
@@ -183,7 +193,7 @@ const CreatePoint: React.FC = () => {
             <h2>Dados</h2>
           </legend>
 
-          <div className="field">
+          <Field className="field">
             <label htmlFor="name">Nome da entidade</label>
             <input
               type="text"
@@ -191,10 +201,10 @@ const CreatePoint: React.FC = () => {
               id="name"
               onChange={handleInputChange}
             />
-          </div>
+          </Field>
 
-          <div className="field-group">
-            <div className="field">
+          <FieldGroup className="field-group">
+            <Field className="field">
               <label htmlFor="email">E-mail</label>
               <input
                 type="email"
@@ -202,9 +212,9 @@ const CreatePoint: React.FC = () => {
                 id="email"
                 onChange={handleInputChange}
               />
-            </div>
+            </Field>
 
-            <div className="field">
+            <Field className="field">
               <label htmlFor="whatsapp">WhatsAapp</label>
               <input
                 type="text"
@@ -212,8 +222,8 @@ const CreatePoint: React.FC = () => {
                 id="whatsapp"
                 onChange={handleInputChange}
               />
-            </div>
-          </div>
+            </Field>
+          </FieldGroup>
         </fieldset>
 
         <fieldset>
@@ -231,8 +241,8 @@ const CreatePoint: React.FC = () => {
             <Marker position={selectedPosition} />
           </Map>
 
-          <div className="field-group">
-            <div className="field">
+          <FieldGroup className="field-group">
+            <Field className="field">
               <label htmlFor="uf">Estado (UF)</label>
               <select
                 name="uf"
@@ -247,9 +257,9 @@ const CreatePoint: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </Field>
 
-            <div className="field">
+            <Field className="field">
               <label htmlFor="city">Cidade</label>
               <select
                 name="city"
@@ -264,8 +274,8 @@ const CreatePoint: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
-          </div>
+            </Field>
+          </FieldGroup>
         </fieldset>
 
         <fieldset>
@@ -274,7 +284,7 @@ const CreatePoint: React.FC = () => {
             <span>Selecione um ou mais ítens abaixo</span>
           </legend>
 
-          <ul className="items-grid">
+          <ItensGrid className="items-grid">
             {items.map((item) => (
               <li
                 key={item.id}
@@ -285,12 +295,12 @@ const CreatePoint: React.FC = () => {
                 <span>{item.title}</span>
               </li>
             ))}
-          </ul>
+          </ItensGrid>
         </fieldset>
 
-        <button type="submit">Cadastrar ponto de coleta</button>
-      </form>
-    </div>
+        <Button type="submit">Cadastrar ponto de coleta</Button>
+      </Form>
+    </Container>
   );
 };
 export default CreatePoint;
