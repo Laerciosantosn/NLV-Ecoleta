@@ -7,7 +7,15 @@ import { LeafletMouseEvent } from 'leaflet';
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
 
-import './styles.css';
+import {
+  Container,
+  HeaderContainer,
+  Header,
+  Main,
+  MainContainer,
+  PointsContainer,
+  Form,
+} from './styles';
 
 import logo from '../../assets/logo.svg';
 
@@ -159,74 +167,76 @@ const Detail: React.FC = () => {
   }
 
   return (
-    <div id="page-detail">
-      <div className="header-container">
-        <header>
+    <Container id="page-detail">
+      <HeaderContainer className="header-container">
+        <Header>
           <img src={logo} alt="Ecoleta" />
 
           <Link to="/">
             <FiArrowLeft />
             Voltar para home
           </Link>
-        </header>
-      </div>
+        </Header>
+      </HeaderContainer>
 
-      <main className="main-container">
-        <p>
-          <strong>2 pontos</strong>
-          encontrados
-        </p>
-        <div className="points-container">
-          <div className="point">
-            <img
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-              alt="Mercadinho"
-            />
-            <h1>Colectoria</h1>
-            <h2>
-              Reíduos Eletrônicos,
-              <br />
-              papel
-            </h2>
-            <p>São Paulo, São Paulo</p>
-            <p>Limoes ardente, jardim das frutas </p>
-            <p>650</p>
-          </div>
+      <MainContainer>
+        <Main className="main-container">
+          <p>
+            <strong>2 pontos</strong>
+            encontrados
+          </p>
+          <PointsContainer className="points-container">
+            <div className="point">
+              <img
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                alt="Mercadinho"
+              />
+              <h1>Colectoria</h1>
+              <h2>
+                Reíduos Eletrônicos,
+                <br />
+                papel
+              </h2>
+              <p>São Paulo, São Paulo</p>
+              <p>Limoes ardente, jardim das frutas </p>
+              <p>650</p>
+            </div>
 
-          <div className="point">
-            <img
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-              alt="Mercadinho"
-            />
-            <h1>Colectoria</h1>
-            <h2>
-              reiduos Eletrônicos,
-              <br />
-            </h2>
-            <p>São Paulo, São Paulo</p>
-            <p>Limoes ardente, jardim das frutas </p>
-            <p>650</p>
-          </div>
+            <div className="point">
+              <img
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                alt="Mercadinho"
+              />
+              <h1>Colectoria 1</h1>
+              <h2>
+                reiduos Eletrônicos,
+                <br />
+              </h2>
+              <p>São Paulo, São Paulo</p>
+              <p>Limoes ardente, jardim das frutas </p>
+              <p>650</p>
+            </div>
 
-          <div className="point">
-            <img
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-              alt="Mercadinho"
-            />
-            <h1>Colectoria</h1>
-            <h2>
-              reiduos Eletrônicos,
-              <br />
-            </h2>
-            <p>São Paulo, São Paulo</p>
-            <p>Limoes ardente, jardim das frutas </p>
-            <p>650</p>
-          </div>
-        </div>
-      </main>
+            <div className="point">
+              <img
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                alt="Mercadinho"
+              />
+              <h1>Colectoria 2</h1>
+              <h2>
+                reiduos Eletrônicos,
+                <br />
+              </h2>
+              <p>São Paulo, São Paulo</p>
+              <p>Limoes ardente, jardim das frutas </p>
+              <p>650</p>
+            </div>
+          </PointsContainer>
+        </Main>
+      </MainContainer>
 
       <div className="form-container">
-        <form>
+        <Form>
           <fieldset>
             {/* -23.4641256, -46.7012522 */}
             <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
@@ -238,9 +248,9 @@ const Detail: React.FC = () => {
               <Marker position={selectedPosition} />
             </Map>
           </fieldset>
-        </form>
+        </Form>
       </div>
-    </div>
+    </Container>
   );
 };
 export default Detail;
