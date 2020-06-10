@@ -288,11 +288,17 @@ const CreatePoint: React.FC = () => {
             {items.map((item) => (
               <li
                 key={item.id}
-                onClick={() => handleSelectedItem(item.id)}
                 className={selectedItems.includes(item.id) ? 'selected' : ''}
               >
-                <img src={item.image_url} alt={item.title} />
-                <span>{item.title}</span>
+                <h3>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectedItem(item.id)}
+                  >
+                    <img src={item.image_url} alt={item.title} />
+                    <span>{item.title}</span>
+                  </button>
+                </h3>
               </li>
             ))}
           </ItensGrid>
