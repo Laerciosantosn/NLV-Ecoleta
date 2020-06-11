@@ -1,12 +1,17 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiMail, FiHome } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
+
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import Label from '../../components/Label';
+import Select from '../../components/Select';
 
 import {
   Container,
@@ -15,7 +20,7 @@ import {
   Form,
   Field,
   FieldGroup,
-  Button,
+  // ButtonStyle,
   ItensGrid,
 } from './styles';
 
@@ -194,8 +199,9 @@ const CreatePoint: React.FC = () => {
           </legend>
 
           <Field className="field">
-            <label htmlFor="name">Nome da entidade</label>
-            <input
+            <Label htmlFor="name">Nome da entidade</Label>
+            <Input
+              icon={FiHome}
               type="text"
               name="name"
               id="name"
@@ -205,8 +211,9 @@ const CreatePoint: React.FC = () => {
 
           <FieldGroup className="field-group">
             <Field className="field">
-              <label htmlFor="email">E-mail</label>
-              <input
+              <Label htmlFor="email">E-mail</Label>
+              <Input
+                icon={FiMail}
                 type="email"
                 name="email"
                 id="email"
@@ -215,8 +222,9 @@ const CreatePoint: React.FC = () => {
             </Field>
 
             <Field className="field">
-              <label htmlFor="whatsapp">WhatsAapp</label>
-              <input
+              <Label htmlFor="whatsapp">WhatsAapp</Label>
+              <Input
+                icon={FaWhatsapp}
                 type="text"
                 name="whatsapp"
                 id="whatsapp"
@@ -231,7 +239,7 @@ const CreatePoint: React.FC = () => {
             <h2>Endereço</h2>
             <span>Selecione o enderço no mapa</span>
           </legend>
-          {/* -23.4641256, -46.7012522 */}
+
           <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -243,8 +251,8 @@ const CreatePoint: React.FC = () => {
 
           <FieldGroup className="field-group">
             <Field className="field">
-              <label htmlFor="uf">Estado (UF)</label>
-              <select
+              <Label htmlFor="uf">Estado (UF)</Label>
+              <Select
                 name="uf"
                 id="uf"
                 value={selectedUf}
@@ -256,12 +264,12 @@ const CreatePoint: React.FC = () => {
                     {uf}
                   </option>
                 ))}
-              </select>
+              </Select>
             </Field>
 
             <Field className="field">
-              <label htmlFor="city">Cidade</label>
-              <select
+              <Label htmlFor="city">Cidade</Label>
+              <Select
                 name="city"
                 id="city"
                 value={selectedCity}
@@ -273,7 +281,7 @@ const CreatePoint: React.FC = () => {
                     {city}
                   </option>
                 ))}
-              </select>
+              </Select>
             </Field>
           </FieldGroup>
         </fieldset>
@@ -289,16 +297,10 @@ const CreatePoint: React.FC = () => {
               <li
                 key={item.id}
                 className={selectedItems.includes(item.id) ? 'selected' : ''}
+                onClick={() => handleSelectedItem(item.id)}
               >
-                <h3>
-                  <button
-                    type="button"
-                    onClick={() => handleSelectedItem(item.id)}
-                  >
-                    <img src={item.image_url} alt={item.title} />
-                    <span>{item.title}</span>
-                  </button>
-                </h3>
+                <img src={item.image_url} alt={item.title} />
+                <span>{item.title}</span>
               </li>
             ))}
           </ItensGrid>
@@ -309,4 +311,5 @@ const CreatePoint: React.FC = () => {
     </Container>
   );
 };
+
 export default CreatePoint;
