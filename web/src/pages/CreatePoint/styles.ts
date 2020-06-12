@@ -34,45 +34,47 @@ export const Title = styled.h1`
   font-size: 36px;
 `;
 
-export const Form = styled.form`
-  margin: 80px auto;
-  padding: 64px;
-  max-width: 730px;
-  background: #fff;
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-
-  fieldset {
-    margin-top: 64px;
-    min-inline-size: auto;
-    border: 0;
-  }
-
-  legend {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-
-    & h2 {
-      font-size: 24px;
-    }
-
-    & span {
-      font-size: 14px;
-      font-weight: normal;
-      color: var(--text-color);
-    }
-  }
-
-  .leaflet-container {
-    width: 100%;
-    height: 350px;
+export const FormContainer = styled.div`
+  form {
+    margin: 80px auto;
+    padding: 64px;
+    max-width: 730px;
+    background: #fff;
     border-radius: 8px;
-    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    fieldset {
+      margin-top: 64px;
+      min-inline-size: auto;
+      border: 0;
+    }
+
+    legend {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+
+      & h2 {
+        font-size: 24px;
+      }
+
+      & span {
+        font-size: 14px;
+        font-weight: normal;
+        color: var(--text-color);
+      }
+    }
+
+    .leaflet-container {
+      width: 100%;
+      height: 350px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
   }
 `;
 
