@@ -1,7 +1,7 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiMail, FiHome } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaCity } from 'react-icons/fa';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
@@ -253,6 +253,7 @@ const CreatePoint: React.FC = () => {
             <Field className="field">
               <Label htmlFor="uf">Estado (UF)</Label>
               <Select
+                icon={FaCity}
                 name="uf"
                 id="uf"
                 value={selectedUf}
@@ -270,6 +271,7 @@ const CreatePoint: React.FC = () => {
             <Field className="field">
               <Label htmlFor="city">Cidade</Label>
               <Select
+                icon={FaCity}
                 name="city"
                 id="city"
                 value={selectedCity}

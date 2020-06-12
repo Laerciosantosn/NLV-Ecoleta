@@ -83,47 +83,6 @@ export const Field = styled.div`
   flex-direction: column;
   margin-bottom: 24px;
 
-  /* input[type='text'],
-  input[type='email'],
-  input[type='number'] {
-    flex: 1;
-    background: #f0f0f5;
-    border-radius: 8px;
-    border: 0;
-    padding: 16px;
-    font-size: 16px;
-    color: #6c6c80;
-  } */
-
-  /* input::placeholder {
-    color: #a0a0b2;
-  } */
-
-  /* select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    flex: 1;
-    background: #f0f0f5;
-    border-radius: 8px;
-    border: 0;
-    padding: 16px 24px;
-    font-size: 16px;
-    color: #6c6c80;
-    outline-color: #2fb86e;
-
-    & option {
-      font-size: 16px;
-      color: #6c6c80;
-    }
-  } */
-
-  /* label {
-    font-size: 14px;
-    margin-bottom: 8px;
-  } */
-
   & :disabled {
     cursor: not-allowed;
   }
@@ -141,25 +100,6 @@ export const FieldGroup = styled.div`
     margin-left: 24px;
   }
 `;
-
-// export const ButtonStyle = styled.button`
-//   width: 260px;
-//   height: 56px;
-//   background: var(--primary-color);
-//   border-radius: 8px;
-//   color: #fff;
-//   font-weight: bold;
-//   font-size: 16px;
-//   border: 0;
-//   align-self: flex-end;
-//   margin-top: 40px;
-//   transition: background-color 0.2s;
-//   cursor: pointer;
-
-//   &:hover {
-//     background: #2fb86e;
-//   }
-// `;
 
 export const ItensGrid = styled.ul`
   display: grid;
