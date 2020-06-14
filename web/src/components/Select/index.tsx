@@ -10,7 +10,8 @@ import { useField } from '@unform/core';
 
 import { IconBaseProps } from 'react-icons';
 
-import { Container } from './styles';
+import { FiAlertCircle } from 'react-icons/fi';
+import { Container, Error } from './styles';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
@@ -24,7 +25,6 @@ const Select: React.FC<SelectProps> = ({
   ...rest
 }) => {
   const selectRef = useRef<HTMLSelectElement>(null);
-
   const { fieldName, defaultValue, error, registerField } = useField(name);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -44,16 +44,16 @@ const Select: React.FC<SelectProps> = ({
 
   const handleSelectBlur = useCallback(() => {
     setIsFocused(false);
-    // if (selectRef.current?.value) {
-    //   setIsFocused(false);
-    //   console.log(selectRef.current?.value);
-    // }
 
-    setIsFilled(!!selectRef.current?.selectedOptions);
+    if (selectRef.current?.selectedIndex === 0) {
+      setIsFilled(false);
+    } else {
+      setIsFilled(true);
+    }
   }, []);
 
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
 
       <select
@@ -65,6 +65,11 @@ const Select: React.FC<SelectProps> = ({
       >
         {children}
       </select>
+      {error && (
+        <Error title={error}>
+          <FiAlertCircle />
+        </Error>
+      )}
     </Container>
   );
 };

@@ -156,36 +156,54 @@ const CreatePoint: React.FC = () => {
     }
   }
 
-  const handleSubmit = useCallback(async (data) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (dataForm) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome Obrigatório'),
-        email: Yup.string()
-          .required('Email obrigatório')
-          .email('Digite um email valido'),
-        whatsapp: Yup.string().required('Whatsaap obrigatório'),
-        uf: Yup.string().required('Unidade federativa obrigatório'),
-        city: Yup.string().required('Cidade obrigatório'),
-        latitude: Yup.number().required('Localização obrigatório'),
-        longitude: Yup.number().required('Localização obrigatório'),
-        items: Yup.array()
-          .required('Minimo 1 item')
-          .min(1, 'Selecione no mínimo 1 item'),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome Obrigatório'),
+          email: Yup.string()
+            .required('Email obrigatório')
+            .email('Digite um email valido'),
+          whatsapp: Yup.string().required('Whatsaap obrigatório'),
+          uf: Yup.string().required('Unidade federativa obrigatório'),
+          city: Yup.string().required('Cidade obrigatório'),
+          latitude: Yup.number().required('Localização obrigatório'),
+          longitude: Yup.number().required('Localização obrigatório'),
+          items: Yup.array()
+            .required('Minimo 1 item')
+            .min(1, 'Selecione no mínimo 1 item'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (err) {
-      // console.log(err);
+        const [latitude, longitude] = selectedPosition;
+        const itemsSelected = selectedItems;
+        console.log(latitude, longitude);
+        console.log(itemsSelected);
+        console.log(selectedPosition);
+        console.log(selectedItems);
 
-      const erros = getValidationErros(err);
+        const data = {
+          ...dataForm,
+          uf: dataForm.uf === '0' ? '' : dataForm.city,
+          city: dataForm.city === '0' ? '' : dataForm.city,
+          latitude: latitude === 0 ? '' : latitude,
+          longitude: longitude === 0 ? '' : longitude,
+          items: itemsSelected.join(','),
+        };
 
-      formRef.current?.setErrors(erros);
-    }
-  }, []);
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+      } catch (err) {
+        console.log(err);
+        const erros = getValidationErros(err);
+
+        formRef.current?.setErrors(erros);
+      }
+    },
+    [selectedItems, selectedPosition],
+  );
 
   // async function handleSubmit(event: FormEvent) {
   //   event.preventDefault();
@@ -304,7 +322,7 @@ const CreatePoint: React.FC = () => {
                   value={selectedUf}
                   onChange={handleSelectedUF}
                 >
-                  <option value="0">Selecione uma UF </option>
+                  <option value="0">Selecione uma UF</option>
                   {ufs.map((uf) => (
                     <option value={uf} key={uf}>
                       {uf}
@@ -322,7 +340,7 @@ const CreatePoint: React.FC = () => {
                   value={selectedCity}
                   onChange={handleSelectedCity}
                 >
-                  <option value="0">Selecione uma cidade </option>
+                  <option value="0">Selecione uma cidade</option>
                   {cities.map((city) => (
                     <option value={city} key={city}>
                       {city}
